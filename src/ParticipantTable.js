@@ -76,7 +76,7 @@ class ParticipantTable extends React.Component {
       <table>
      <thead>
        <th onClick={this.nameSort.bind(this,'name')}>Full Name</th>
-       <th onClick={this.emailSort.bind(this,'email')}>Email Address</th>
+       <th onClick={this.emailSort.bind(this,'mail')}>Email Address</th>
        <th onClick={this.numberSort.bind(this,'phone')}>Phone Number</th>
      </thead>
     <tbody>
