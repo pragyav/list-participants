@@ -1,0 +1,14 @@
+.edit, .delete {
+  height: 24px;
+  width: 24px;
+  fill: #909090
+}
+
+.save, .cancel {
+  height: 40px;
+  background: #07f;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  display:none
+}
