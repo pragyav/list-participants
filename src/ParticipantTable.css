@@ -1,14 +1,94 @@
-.edit, .delete {
-  height: 24px;
-  width: 24px;
-  fill: #909090
-}
-
-.save, .cancel {
-  height: 40px;
-  background: #07f;
-  color: #ffffff;
+#list-item {
+  display: inline-grid;
+  grid-template-columns: 240px 340px 340px 90px 90px;
+  grid-template-rows: auto;
+  grid-row-gap: 2px;
+  height: 72px;
+  text-align: left;
+  color: #757575;
   font-size: 16px;
   font-weight: 500;
-  display:none
+  background-color: white;
+  overflow: auto;
+}
+
+#name-item {
+  color: #505050;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  float: left;
+  margin-top: 22px;
+  margin-left: 16px;
+}
+
+#mail-item {
+  color: #505050;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  float: left;
+  margin-top: 22px;
+  margin-left: 16px;
+}
+
+#phone-item {
+  color: #505050;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  margin-left: 16px;
+  float: left;
+  margin-top: 22px;
+}
+
+#edit, #delete {
+  fill: #909090;
+  height: 24px;
+  width: 24px;
+  float: right;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 22px;
+}
+
+#name-edit, #phone-edit {
+  margin-top: 16px;
+  margin-left: 16px;
+  height: 40px;
+  background-color: #F5F5F5;
+  text-align:left;
+  width: 200px;
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 10px;
+}
+
+#mail-edit {
+  margin-top: 16px;
+  margin-left: 16px;
+  height: 40px;
+  background-color: #F5F5F5;
+  text-align:left;
+  width: 300px;
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 10px;
+}
+
+#save, #cancel {
+  height: 40px;
+  background: #F5F5F5;
+  color: grey;
+  font-size: 16px;
+  font-weight: 500;
+  float: right;
+  margin-top: 16px;
+  margin-right: 16px;
+  width: 70px;
+}
+
+#save:hover, #cancel:hover {
+  background-color: #07f;
+  color: #ffffff;
 }

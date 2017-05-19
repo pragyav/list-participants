@@ -1,105 +1,82 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './ParticipantTable.css';
 
 class ParticipantTable extends React.Component {
-
-  handleEdit(key){
-   //ToDo: Hide Edit & Delete, show Save & Cancel
+  constructor(props) {
+    super(props);
+    this.state = { isEditing: false }
+    this.renderForm = this.renderForm.bind(this);
+    this.renderTable = this.renderTable.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleSave = this.handleSave.bind(this);
   }
 
-  handleSave(e) {
-  //Commit CellData
-  e.preventDefault();
-   var newItem = {
-    name: this.state.name,
-    mail:this.state.mail,
-    phone:this.state.phone,
-    id: Date.now()
-  };
-  return
-  this.setState(newItem);
-  //ToDo: Hide Save & Cancel, show Edit and Delete
- };
-
-  handleCancel(item){
-    //ToDo: Reject Save
-    //ToDo: Hide Save & Cancel, show Edit & Delete
-  }
-
-  nameSort(field){
-     var sortedParticipants = this.props.items.sort( (a, b) => {
-       var nameA = a[field].toUpperCase();
-       var nameB = b[field].toUpperCase();
-       if (nameA < nameB) {
-         return -1;
-       }
-       if (nameA > nameB) {
-         return 1;
-       }
-       return 0;
-     });
-     this.setState({'items': sortedParticipants});
-  }
-
-  emailSort(field){
-     var sortedParticipants = this.props.items.sort( (a, b) => {
-       var nameA = a[field];
-       var nameB = b[field];
-       if (nameA < nameB) {
-         return -1;
-       }
-       if (nameA > nameB) {
-         return 1;
-       }
-       return 0;
-     });
-     this.setState({'items': sortedParticipants});
-  }
-
-  numberSort(field){
-     var sortedParticipants = this.props.items.sort( (a, b) => {
-       return a[field] - b[field];
-     });
-     this.setState({'items': sortedParticipants});
-   }
-
-  handleDelete(item){
-  const newState = this.props.items;
-  if (newState.indexOf(item) > -1) {
-    newState.splice(newState.indexOf(item), 1);
-    this.setState({items: newState})
-  }
-}
   render() {
-    return (
-      <div>
-      <table>
-     <thead>
-       <th onClick={this.nameSort.bind(this,'name')}>Full Name</th>
-       <th onClick={this.emailSort.bind(this,'mail')}>Email Address</th>
-       <th onClick={this.numberSort.bind(this,'phone')}>Phone Number</th>
-     </thead>
-    <tbody>
-        {this.props.items.map((item) =>
-        <tr key={item.id.toString()}>
-          <td> <input type="text" value={item.name} onChange={this.props.onItemChange} /> </td>
-          <td> <input type="email" value={item.mail} onChange={this.props.onItemChange} /> </td>
-          <td> <input type="tel" value={item.phone} onChange={this.props.onItemChange} /> </td>
-          <td> <input type="image" src={require('./images/Edit.png')}
-          className="edit" onClick={this.handleEdit.bind(this, item)}/> </td>
-          <td> <input type="image" src={require('./images/Delete.png')}
-          className="delete" onClick={this.handleDelete.bind(this, item)}/> </td>
-          <td> <input type="button" className="save" value="Save"
-          onClick={this.handleSave.bind(this, item)}/></td>
-          <td> <input type="button" className="cancel" value="Cancel"
-          onClick={this.handleCancel.bind(this, item)}/></td>
-          </tr>
-        )}
-    </tbody>
-    </table>
-    </div>
-    );
+    const {isEditing} = this.state;
+    return(
+      <section id="list-item-border">
+      {
+        isEditing ? this.renderForm() : this.renderTable()
+      }
+      </section>
+    )
   }
-}
 
-export default ParticipantTable;
+  renderForm(){
+    return(
+      <form onSubmit={this.handleSave}>
+      <input id="name-edit" type="text" ref={(value) => {this.name = value}}
+      defaultValue={this.props.details.name} />
+      <input id="mail-edit" type="email" ref={(value) => {this.mail = value}}
+      defaultValue={this.props.details.mail} />
+      <input id="phone-edit" type="tel" ref={(value) => {this.phone = value}}
+      defaultValue={this.props.details.phone} />
+      <button id="save" type="submit">Save</button>
+      <button id="cancel" type="reset" onClick={(evt) => {
+        evt.stopPropagation();
+        this.handleCancel()
+      }}>Cancel</button>
+      </form>
+    )
+  }
+
+  renderTable(){
+    return(
+      <div id="list-item">
+      <div id="name-item"> {this.props.details.name} </div>
+      <div id="mail-item"> {this.props.details.mail} </div>
+      <div id="phone-item"> {this.props.details.phone} </div>
+      <img id="edit" src={require('./images/Edit.png')}
+      onClick={(evt) => {
+        evt.stopPropagation();
+        this.handleEdit()
+      }}/>
+      <img id="delete" src={require('./images/Delete.png')}
+      onClick={(evt) => {
+        evt.stopPropagation();
+        this.props.deleteTask(this.props.index)
+      }}/>
+      </div>
+    )
+  }
+
+  handleEdit() {
+    const { isEditing } = this.state;
+    this.setState({
+      isEditing: !isEditing
+    })
+  }
+
+  handleSave(evt){
+    evt.preventDefault();
+    this.props.editItem(this.props.index, this.name.value,
+      this.mail.value, this.phone.value);
+      this.handleEdit();
+    }
+
+    handleCancel(){
+      this.handleEdit();
+    }
+  }
+
+  export default ParticipantTable;

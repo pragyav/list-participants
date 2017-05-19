@@ -1,5 +1,125 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+#page {
+  background-color: #F5F5F5;
+  width: 100%;
+  margin: 0 auto;
+  height: 1000px;
+}
+
+#page-header {
+  height: 96px;
+  background-color: Lightgrey;
+  overflow: auto;
+}
+
+#nord-logo {
+  margin-top: 32px;
+  margin-left: 32px;
+  height: 32px;
+  float: left;
+}
+
+#company-name{
+  font: 20px arial, sans-serif;
+  color: white;
+  margin-top: 35px;
+  margin-left: 76px;
+}
+
+#page-body {
+  margin: auto;
+  margin-top: 32px;
+  width: 1100px;
+  font-weight: bolder;
+  color: grey;
+  font: 20px arial, sans-serif;
+}
+
+#body-header {
+  margin: auto;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  font-weight: bolder;
+  color: grey;
+  font: 20px arial, sans-serif;
+}
+
+#form-border {
+  height: 80px;
+  background-color: white;
+}
+
+#name, #phone {
+  margin-top: 16px;
+  margin-left: 16px;
+  height: 40px;
+  background-color: #F5F5F5;
+  text-align:left;
+  width: 200px;
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 10px;
+}
+
+#mail {
+  margin-top: 16px;
+  margin-left: 16px;
+  height: 40px;
+  background-color: #F5F5F5;
+  text-align:left;
+  width: 300px;
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 10px;
+}
+
+.add-btn {
+  margin-top: 16px;
+  margin-right: 16px;
+  height: 40px;
+  float: right;
+  background-color: #F5F5F5;
+  color: grey;
+  width: 100px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.add-btn:hover {
+  background-color: #07f;
+  color: #ffffff;
+}
+
+#list-header {
+  margin-top: 10px;
+  height: 48px;
+  background-color: white;
+  fill: #909090;
+}
+
+#name-header, #phone-header {
+  display: inline;
+  margin-left: 10px;
+  margin-right: 175px;
+  color:#757575;
+  line-height: 16px;
+  font-weight: 500;
+  font: 14px arial, sans-serif;
+  padding-left: 10px;
+}
+
+#mail-header {
+  display: inline;  
+  margin-left: 10px;
+  margin-right: 225px;
+  color:#757575;
+  line-height: 16px;
+  font-weight: 500;
+  font: 14px arial, sans-serif;
+  padding-left: 10px;
+}
+
+#list-item-border {
+  margin-top: 2px;
+  height: 72px;
+  background-color: white;
 }
